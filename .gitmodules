@@ -1,0 +1,6 @@
+[submodule "hexo-theme-cactus"]
+	path = hexo-theme-cactus
+	url = git@github.com:brobsc/hexo-theme-cactus.git
+[submodule "themes/cactus"]
+	path = themes/cactus
+	url = git@github.com:brobsc/hexo-theme-cactus.git
