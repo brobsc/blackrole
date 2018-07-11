@@ -4,9 +4,8 @@ tags:
   - blog
   - hexo
 date: 2018-07-11 14:43:52
-updated: 2018-07-11 14:53:00
+updated: 2018-07-11 15:33:00
 ---
-
 
 # Setting up on MacOS
 
@@ -23,7 +22,7 @@ updated: 2018-07-11 14:53:00
 
     $ hexo server --draft --open
 
-* Browser has to be reloaded on every save[^2](This can bee fixed with `hexo-browsersync` plugin)
+* Browser has to be reloaded on every save[^2](This can be fixed with `hexo-browsersync` plugin)
 * This will need to be restarted when `_config.yml` changes.
 
 ## Create new draft
@@ -46,6 +45,8 @@ updated: 2018-07-11 14:53:00
 ## Install cactus theme
 
 * Instructions on [github](https://github.com/probberechts/hexo-theme-cactus)
+
+* Instead of cloning the repository, fork it, then add it as submodule with `git submodule add <link_to_fork>`
 
 ## Current changes:
 
@@ -85,6 +86,7 @@ plugins:
 
 1. https://www.cgmartin.com/2016/01/03/getting-started-with-hexo-blog/
 1. https://hexo.io/docs/front-matter.html
+1. http://fenglu.me/2016/08/12/How-to-setup-a-hexo-based-blog-Part-2/
 
 [^1]: This ran into a error with sharp package. Will have to reinstall it later for xpdf
 
