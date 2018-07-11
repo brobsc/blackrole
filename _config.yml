@@ -7,13 +7,13 @@ title: blackrole
 subtitle:
 description: a simple blog for noting stuff
 keywords:
-author: you
+author: brobsc
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://blog.brobsc.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -83,7 +83,7 @@ theme_config:
     '~projects': http://github.com/brobsc
     '~about': http://brobsc.me
   social_links:
-    github: brobsc
+    github: http://github.com/brobsc
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
