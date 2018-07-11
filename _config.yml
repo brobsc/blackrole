@@ -76,7 +76,7 @@ pagination_dir: page
 theme: cactus
 
 theme_config:
-  colorscheme: classic
+  colorscheme: dark
   nav:
     '~home': /
     '~archives': /archives/
