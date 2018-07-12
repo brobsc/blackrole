@@ -79,9 +79,9 @@ done
 
     $ sudo apt-get install keychain
 
-## Add this to your `~/.{zshrc,bashrc}`
+## Add this to your `~/.{zshenv,bashenv}`
 
-```bash (~/.zshrc)
+```bash (~/.zshenv)
 ###########################################################################
 # allow $USER to use keys. Only enter once and it will remain enabled till
 # you delete it or reboot the server 
