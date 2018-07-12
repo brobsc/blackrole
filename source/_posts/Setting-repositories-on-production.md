@@ -31,6 +31,8 @@ updated: 2018-07-11 18:01:00
 ```bash (hooks/post-receive)
 #!/usr/bin/env bash
 
+set -e
+
 export GIT_WORK_TREE="/home/you/repo"
 export GIT_DIR="/home/you/repo.git"
 
@@ -57,7 +59,7 @@ do
 done
 ```
 
-* `set -e` does nothing to prevent a failed command (It's not a try-catch)
+* `set -e` prevents script from continuing with errors
 * `mkdir -p $GIT_WORK_TREE` creates work_tree directory
 * `yarn run <bin>` allow to run bin on `/node_modules/`
 
@@ -67,10 +69,22 @@ done
 
 * Don't forget #! variable
 
-## Add ssh key to ssh agent on server
+# Allow git submodule update --init --recursive on server
 
-    $ eval $(ssh-agent)
-    $ ssh-add -k /home/you/.ssh/id_rsa
+## Install keychain and your own user
+
+    $ sudo apt-get install keychain
+
+## Add this to your `~/.{zshrc,bashrc}`
+
+```bash (~/.zshrc)
+###########################################################################
+# allow $USER to use keys. Only enter once and it will remain enabled till
+# you delete it or reboot the server 
+###########################################################################
+/usr/bin/keychain $HOME/.ssh/id_rsa
+source $HOME/.keychain/$HOSTNAME-sh
+```
 
 * Automatic deploy needs to run `git submodule...` without typing passphrase
 
