@@ -7,7 +7,7 @@ tags:
   - ssh
   - production
 date: 2018-07-11 17:54:00
-updated: 2018-07-11 18:01:00
+updated: 2018-07-12 11:49:00
 ---
 
 
@@ -32,8 +32,8 @@ updated: 2018-07-11 18:01:00
 #!/usr/bin/env bash
 set -e
 
-export GIT_WORK_TREE="/home/bruno/blackrole"
-export GIT_DIR="/home/bruno/blackrole.git"
+export GIT_WORK_TREE="/home/you/repo"
+export GIT_DIR="/home/you/repo.git"
 
 mkdir -p $GIT_WORK_TREE
 

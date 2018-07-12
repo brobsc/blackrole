@@ -84,6 +84,7 @@ theme_config:
     '~about': http://brobsc.me
   social_links:
     github: http://github.com/brobsc
+  highlight: ir-black
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
