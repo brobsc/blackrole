@@ -30,11 +30,10 @@ updated: 2018-07-11 18:01:00
 
 ```bash (hooks/post-receive)
 #!/usr/bin/env bash
-
 set -e
 
-export GIT_WORK_TREE="/home/you/repo"
-export GIT_DIR="/home/you/repo.git"
+export GIT_WORK_TREE="/home/bruno/blackrole"
+export GIT_DIR="/home/bruno/blackrole.git"
 
 mkdir -p $GIT_WORK_TREE
 
@@ -42,17 +41,22 @@ while read oldrev newrev ref
 do
   if [[ $ref =~ .*/master$ ]];
   then
-    echo "Branch master received. Deploying..."
-    cd $GIT_WORK_TREE
-    git clean -df
-    git checkout -f
-    echo "Running yarn..."
-    yarn
-    echo "Updating submodules"
-    git submodule update --init --recursive
-    echo "Running hexo generate..."
-    yarn run hexo generate
-    echo "Push received and deployed!"
+    if [ "$newrev" = "0000000000000000000000000000000000000000" ];
+    then
+      echo "Branch master has been deleted. Aborting post-receive"
+    else
+      echo "Branch master received. Deploying..."
+      cd $GIT_WORK_TREE
+      git clean -df
+      git checkout -f
+      echo "Running yarn..."
+      yarn
+      echo "Updating submodules"
+      git submodule update --init --recursive
+      echo "Running hexo generate..."
+      yarn run hexo generate
+      echo "Push received and deployed succesfully!"
+    fi
   else
     echo "Ref $ref successfully received.  Doing nothing: only the master branch may be deployed on this server."
   fi
@@ -83,7 +87,7 @@ done
 # you delete it or reboot the server 
 ###########################################################################
 /usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+source $HOME/.keychain/$HOST-sh
 ```
 
 * Automatic deploy needs to run `git submodule...` without typing passphrase
@@ -126,6 +130,8 @@ source $HOME/.keychain/$HOSTNAME-sh
 1. https://stackoverflow.com/questions/15231937/heroku-and-github-at-the-same-time
 1. https://stackoverflow.com/questions/13677125/force-git-to-run-post-receive-hook-even-if-everything-is-up-to-date
 1. https://stackoverflow.com/questions/17846529/could-not-open-a-connection-to-your-authentication-agent
+1. https://www.cyberciti.biz/faq/ubuntu-debian-linux-server-install-keychain-apt-get-command/
+1. https://stackoverflow.com/questions/19692354/git-dont-call-post-receive-hook-when-deleting-a-branch
 
 [^1]: `pbcopy` is for mac only. Use `xsel` or `xclip` on linux
 [^2]: You should use a machine account, or, on public repos, simply add submodules with https remote url. See: https://developer.github.com/v3/guides/managing-deploy-keys/
